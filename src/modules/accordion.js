@@ -25,14 +25,14 @@ const accordion = () => {
       elem.addEventListener(("click"), () => {  
         if (elem.classList.contains("active")) {
           elem.classList.remove("active");
+          console.log("dfgdfg");
         } else {
-          removeClassActive(elements);
-        }
+          removeClassActive(elements); 
           elem.classList.add("active");
-          showContentOfActiveElement(elementsContent);         
+        }
+      showContentOfActiveElement(elementsContent);         
       });
     });
-
     
 };
 
