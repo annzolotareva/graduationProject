@@ -1,10 +1,11 @@
 const smoothScroll = () => {
     const arrow = document.querySelector(".up");
+    const elementsOfTopMenu = document.querySelectorAll(".top-menu ul > li a");
 
     arrow.style.display = "none";
 
     const showArrow = () => {
-        window.addEventListener('scroll', function(e) {
+        window.addEventListener('scroll', (e) => {
             e.target.value = scrollY;
             if (e.target.value > 520) {
                 arrow.style.display = "block";
@@ -13,14 +14,12 @@ const smoothScroll = () => {
             }
         });
     };
-    
 
-    const scroll = () => {
-        arrow.addEventListener('click', (e) => {
+    const scroll = (button) => {
+        button.addEventListener('click', (e) => {
             e.preventDefault();
-            arrow.setAttribute("href", ".main-wrapper");
-            const classOfSection = arrow.getAttribute("href");
-            const section = document.querySelector(classOfSection);
+            const linkAddress = button.getAttribute("href");
+            const section = document.querySelector(linkAddress);
             if (section) {
                 section.scrollIntoView({
                     behavior: "smooth",
@@ -30,8 +29,16 @@ const smoothScroll = () => {
         });
     };
 
-     showArrow();
-     scroll();   
+    const scrollToHeader = (button) => {
+        button.setAttribute("href", ".main-wrapper");
+        scroll(button);
+    };
+
+    showArrow();
+    scrollToHeader(arrow);
+    elementsOfTopMenu.forEach((elem) => {
+        scroll(elem);
+    });
 };
 
 export default smoothScroll;
