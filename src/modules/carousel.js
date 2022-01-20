@@ -1,29 +1,7 @@
 const carousel = () => {
     const servicesCarousel = document.querySelector(".services-carousel");
-    const row = document.querySelector(".services-carousel.row");
-    const btnsBefore = document.querySelectorAll(".img-wrapper:before");
     const modalWindow = document.querySelector(".modal-callback");
-    console.log(btnsBefore[1]);
-    const imgWrapper = row.querySelectorAll(".img-wrapper");
 
-      imgWrapper.forEach((elem) => {
-        elem.addEventListener("click", () => {
-        modalWindow.style.display = "block";
-        console.log("sdfesdfs");
-      });
-    });
-
-
-    
-    const servicesArrows = document.querySelector(".services-arrow");
-    const elements = row.querySelectorAll(".element");
-    let indexOffirstVisibleSlide = 0;
-    let indexOfthirdVisibleSlide = 3;
-
-    // elements.forEach((elem, index), () => {
-    //   if (index > 2);
-    //   elem[index].style.opacity = 0;
-    // });
 
     
     //  const noneActiveSlide = (elems, index) => {
