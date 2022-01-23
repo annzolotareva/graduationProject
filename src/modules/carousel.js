@@ -1,57 +1,48 @@
 const carousel = () => {
     const servicesCarousel = document.querySelector(".services-carousel");
-    const modalWindow = document.querySelector(".modal-callback");
+    const servicesElements = document.querySelector(".services-elements");
+    const servicesArrows = document.querySelectorAll(".services-arrow");
+    const elements = servicesCarousel.querySelectorAll(".col-sm-6");
+    let position = 0;
+    let slidesToShow =3;
+    let widthSlide = Math.floor(100/slidesToShow);
 
+    servicesCarousel.style.display = "flex";
+    servicesElements.style.overflow = "hidden";
 
-    
-    //  const noneActiveSlide = (elems, index) => {
-    //     elems[index].style.display = 'none';
-    // };
+    elements.forEach((elem) => {
+        elem.style.flex = `0 0 ${widthSlide}%`;
+    });
 
-    // const activeSlide = (elems, index) => {
-    //     elems[index].style.display = 'block';
-    // };
+    const nextSlide = () => {
+        if (position < elements.length - slidesToShow){
+            ++position;
+            servicesCarousel.style.transform = `translateX(-${position * widthSlide}%)`;
+        }
+    };
 
-    // servicesArrows.addEventListener("click", (e) => {
-    // e.preventDefault();
+    const prevSlide = () => {
+        if (position > 0) {
+            --position;
+            servicesCarousel.style.transform = `translateX(-${position * widthSlide}%)`;
+        } 
+    };
 
+    const swipeSlides = () => {
+        servicesArrows.forEach((arrow) => {
+            arrow.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (e.target.matches(".arrow-right")) {
+                    nextSlide();
+                } else if (e.target.matches(".arrow-left")) {
+                    prevSlide();
+                }
 
-    // if (e.target.matches(".arrow-right")) {
-    //   console.log("r");
-    //   noneActiveSlide(elements, indexOffirstVisibleSlide);
-    //   activeSlide(elements, indexOfthirdVisibleSlide);
-    //   indexOfthirdVisibleSlide++;
-    //   indexOffirstVisibleSlide++;
-      
-      
-    // } else if (e.target.matches(".arrow-left")) {
-    //   console.log("l");
-    //   noneActiveSlide(elements, indexOfthirdVisibleSlide);
-    //   activeSlide(elements, indexOffirstVisibleSlide);
-    //   indexOffirstVisibleSlide--;
-    //   indexOfthirdVisibleSlide--;
-    //   console.log(indexOfthirdVisibleSlide);
-    //   console.log(indexOffirstVisibleSlide);
-      
-      
-    // }
+            });
+        });
+    };
 
-    // if (indexOfthirdVisibleSlide == elements.length) {
-    //   indexOfthirdVisibleSlide = 0;
-    // }
-
-    // if (indexOffirstVisibleSlide == elements.length) {
-    //   indexOffirstVisibleSlide = 0;
-    // }
-
-    //  if (indexOffirstVisibleSlide < 0) {
-    //    indexOffirstVisibleSlide = elements.length - 1;
-    //  }
-
-    //  if (indexOfthirdVisibleSlide < 0) {
-    //    indexOfthirdVisibleSlide = elements.length - 1;
-    //  }
-    // });
+    swipeSlides();
 
 };
 

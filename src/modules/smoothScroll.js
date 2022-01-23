@@ -1,6 +1,6 @@
 const smoothScroll = () => {
     const arrow = document.querySelector(".up");
-    const elementsOfTopMenu = document.querySelectorAll(".top-menu ul > li a");
+    const elementsOfTopMenu = document.querySelectorAll(".top-menu ul>li>a");
 
     arrow.style.display = "none";
 

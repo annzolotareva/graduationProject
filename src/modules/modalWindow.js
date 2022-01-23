@@ -4,6 +4,8 @@ const modalWindow = () => {
     const modal = document.querySelector('.modal-callback');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modalCloseBtn = document.querySelector('.modal-close');
+    const elementsOfCarousel = document.querySelectorAll('.services-carousel .fancyboxModal');
+    const imgWrappers = document.querySelectorAll('.services-carousel .img-wrapper');
 
     const openModalWindow = (button) => {
         button.addEventListener('click', (e) => {
@@ -21,9 +23,30 @@ const modalWindow = () => {
         });
     };
 
+    const removeClassAbsolute = () => {
+        elementsOfCarousel.forEach((elementOfCarousel) => {
+            elementOfCarousel.classList.remove("absolute");  
+        });
+    };
+    
+    const addClassAbsolute = () => {
+        imgWrappers.forEach((wrapper) => {
+            wrapper.classList.add("absolute");
+        });
+    };
+
+    removeClassAbsolute();
+    addClassAbsolute();
+    
+    imgWrappers.forEach((wrapper) => {
+        addClassAbsolute();
+        openModalWindow(wrapper);
+    });
+
     callbackBtns.forEach((btn) => {
         openModalWindow(btn);
     });
+
     openModalWindow(servicesbtn);
     closeModalWindow(modalOverlay);
     closeModalWindow(modalCloseBtn);
