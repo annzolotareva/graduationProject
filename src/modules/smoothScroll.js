@@ -2,8 +2,6 @@ const smoothScroll = () => {
     const arrow = document.querySelector(".up");
     const elementsOfTopMenu = document.querySelectorAll(".top-menu ul>li>a");
 
-    arrow.style.display = "none";
-
     const showArrow = () => {
         window.addEventListener('scroll', (e) => {
             e.target.value = scrollY;
@@ -34,6 +32,7 @@ const smoothScroll = () => {
         scroll(button);
     };
 
+    arrow.style.display = "none";
     showArrow();
     scrollToHeader(arrow);
     elementsOfTopMenu.forEach((elem) => {

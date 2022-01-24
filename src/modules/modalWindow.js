@@ -1,12 +1,23 @@
 import { animate } from "./helpers.js";
 
 const modalWindow = () => {
+    const arrow = document.querySelector(".up");
     const modal = document.querySelector('.modal-callback');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modalCloseBtn = document.querySelector('.modal-close');
     const elementsOfCarousel = document.querySelectorAll('.services-carousel .fancyboxModal');
     const imgWrappers = document.querySelectorAll('.services-carousel .img-wrapper');
     const mainWrapper = document.querySelector(".main-wrapper");
+    const form = document.querySelector('[name="form-callback"]');
+    const formElements = form.querySelectorAll("input");
+
+    const cleanData = () => {
+      formElements.forEach((input) => {
+              if (input.name == "tel" || input.name == "fio"){
+                  input.value = "";
+              }        
+            });
+    };
 
     const visibleModalWindow = () => {
         animate({
@@ -20,7 +31,7 @@ const modalWindow = () => {
           },
         });
         modal.style.display = 'block';
-        modalOverlay.style.display = 'block';  
+        modalOverlay.style.display = 'block';
     };
 
     const unvisibleModalWindow = () => {
@@ -33,6 +44,10 @@ const modalWindow = () => {
             e.preventDefault();
             if (e.target.matches(".services-carousel .img-wrapper") || e.target.matches(".callback-btn") || e.target.classList.contains("button-services")) {
                 visibleModalWindow();
+                document.body.style.overflow = "hidden";
+                if (arrow.style.display = "block") {
+                    arrow.style.display = "none";
+                }
             }   
         });
     };
@@ -41,6 +56,11 @@ const modalWindow = () => {
         elem.addEventListener("click", (e) => {
             e.preventDefault();
             unvisibleModalWindow();
+            document.body.style.overflow = "";
+            if (window.pageYOffset > 520) {
+                arrow.style.display = "block";
+            }
+            cleanData();
         });
     };
 
