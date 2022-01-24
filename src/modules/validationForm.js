@@ -21,7 +21,7 @@ const validationForm = () => {
     return success;
   };
 
-   return validate(formElements);
+  return validate(formElements);
 
 };
 

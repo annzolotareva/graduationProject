@@ -25,7 +25,7 @@ const carousel = () => {
         if (position > 0) {
             --position;
             servicesCarousel.style.transform = `translateX(-${position * widthSlide}%)`;
-        } 
+        }
     };
 
     const swipeSlides = () => {

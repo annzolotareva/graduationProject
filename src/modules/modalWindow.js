@@ -1,3 +1,5 @@
+import { animate } from "./helpers.js";
+
 const modalWindow = () => {
     const modal = document.querySelector('.modal-callback');
     const modalOverlay = document.querySelector('.modal-overlay');
@@ -7,6 +9,16 @@ const modalWindow = () => {
     const mainWrapper = document.querySelector(".main-wrapper");
 
     const visibleModalWindow = () => {
+        animate({
+          duration: 500,
+          timing(timeFraction) {
+            return timeFraction;
+          },
+          draw(progress) {
+            modal.style.opacity = progress;
+            modalOverlay.style.opacity = progress;
+          },
+        });
         modal.style.display = 'block';
         modalOverlay.style.display = 'block';  
     };
